@@ -2,8 +2,7 @@ package com.mitocode.order.infrastructure.entity;
 
 import com.mitocode.order.domain.OrderStatus;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -15,6 +14,9 @@ import java.util.UUID;
 @Table(name = "orders")
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class OrderEntity {
 
     @Id

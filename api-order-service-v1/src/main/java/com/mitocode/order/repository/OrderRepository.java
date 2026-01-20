@@ -31,9 +31,9 @@ public class OrderRepository {
     public Order save(Order order) {
         OrderEntity entity = DomainToEntityMapper.toEntity(order);
 
-        entity = orderRepository.save(entity);
+        OrderEntity savedEntity = orderRepository.save(entity);
 
-        return EntityToDomainMapper.toDomain(entity);
+        return EntityToDomainMapper.toDomain(savedEntity);
     }
 
 
