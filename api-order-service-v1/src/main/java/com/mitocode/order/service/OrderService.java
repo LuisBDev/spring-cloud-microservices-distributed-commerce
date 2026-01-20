@@ -2,8 +2,8 @@ package com.mitocode.order.service;
 
 import com.mitocode.order.domain.Order;
 import com.mitocode.order.repository.OrderRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
