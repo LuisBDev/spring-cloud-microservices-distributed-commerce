@@ -1,5 +1,5 @@
 server:
-  port: 50010
+  port: 40010
   servlet:
     context-path: /api/v1
 
