@@ -4,7 +4,7 @@ spring:
 
 
 server:
-  port: 50100
+  port: 40100
   servlet:
     context-path: /api/v1/order-orchestrator
 

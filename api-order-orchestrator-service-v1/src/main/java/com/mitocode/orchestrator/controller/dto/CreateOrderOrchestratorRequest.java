@@ -5,10 +5,11 @@ import java.util.List;
 
 public record CreateOrderOrchestratorRequest(
         CustomerRequest customer,
-        PaymentAccount account,
+        CardRequest card,
         RestaurantRequest restaurant,
         List<OrderItemRequest> items,
         DeliveryAddress deliveryAddress,
         DeliveryPerson deliveryPerson,
         BigDecimal total
-) {}
+) {
+}
