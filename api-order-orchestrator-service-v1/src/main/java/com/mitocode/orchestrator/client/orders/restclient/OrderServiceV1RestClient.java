@@ -1,24 +1,27 @@
-package com.mitocode.orchestrator.client.orders;
+package com.mitocode.orchestrator.client.orders.restclient;
 
-import com.mitocode.orchestrator.client.orders.dto.CreateOrderRequest;
-import com.mitocode.orchestrator.client.orders.dto.CreateOrderResponse;
-import com.mitocode.orchestrator.client.orders.dto.CustomerRequest;
-import com.mitocode.orchestrator.client.orders.dto.RestaurantRequest;
+import com.mitocode.orchestrator.client.orders.OrderServiceV1Client;
+import com.mitocode.orchestrator.client.orders.restclient.dto.CreateOrderRequest;
+import com.mitocode.orchestrator.client.orders.restclient.dto.CreateOrderResponse;
+import com.mitocode.orchestrator.client.orders.restclient.dto.CustomerRequest;
+import com.mitocode.orchestrator.client.orders.restclient.dto.RestaurantRequest;
 import com.mitocode.orchestrator.controller.dto.CreateOrderOrchestratorRequest;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
-/**
- * @author Luis Balarezo
- **/
+@Slf4j
 @Component
-@RequiredArgsConstructor
-public class OrderServiceV1RestClient {
+@AllArgsConstructor
+@Profile("RestClient")
+public class OrderServiceV1RestClient implements OrderServiceV1Client {
 
     private final RestClient orderRestClient;
 
     public CreateOrderResponse createOrder(CreateOrderOrchestratorRequest createOrderOrchestratorRequest) {
+        log.info("RestClient - Creating order for customer: {}", createOrderOrchestratorRequest.customer().name());
 
         CreateOrderRequest request = new CreateOrderRequest(
                 new CustomerRequest(createOrderOrchestratorRequest.customer().id(), createOrderOrchestratorRequest.customer().name()),
@@ -26,13 +29,9 @@ public class OrderServiceV1RestClient {
                 createOrderOrchestratorRequest.total()
         );
 
-        return orderRestClient.post()
-                .uri("/orders")
+        return orderRestClient.post().uri("/orders")
                 .body(request)
                 .retrieve()
                 .body(CreateOrderResponse.class);
-
     }
-
-
 }

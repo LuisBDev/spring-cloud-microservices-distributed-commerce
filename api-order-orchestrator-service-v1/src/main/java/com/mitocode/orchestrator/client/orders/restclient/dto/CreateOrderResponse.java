@@ -1,4 +1,4 @@
-package com.mitocode.orchestrator.client.orders.dto;
+package com.mitocode.orchestrator.client.orders.restclient.dto;
 
 import java.util.UUID;
 

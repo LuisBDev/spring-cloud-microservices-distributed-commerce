@@ -1,7 +1,7 @@
 package com.mitocode.orchestrator.service;
 
-import com.mitocode.orchestrator.client.orders.OrderServiceV1RestClient;
-import com.mitocode.orchestrator.client.orders.dto.CreateOrderResponse;
+import com.mitocode.orchestrator.client.orders.restclient.OrderServiceV1RestClient;
+import com.mitocode.orchestrator.client.orders.restclient.dto.CreateOrderResponse;
 import com.mitocode.orchestrator.controller.dto.CreateOrderOrchestratorRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
