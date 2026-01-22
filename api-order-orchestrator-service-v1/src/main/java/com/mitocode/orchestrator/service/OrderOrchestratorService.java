@@ -12,7 +12,7 @@ public class OrderOrchestratorService {
 
     private final OrderService orderService;
     private final PaymentService paymentService;
-//    private final RestaurantService restaurantService;
+    private final RestaurantService restaurantService;
 //    private final DeliveryService deliveryService;
 
     public CreateOrderOrchestratorResponse createOrder(CreateOrderOrchestratorRequest request) {
@@ -23,6 +23,7 @@ public class OrderOrchestratorService {
 
         paymentService.charge(request.customer().id(), request.card().id(), request.total());
 
+        restaurantService.reserveRestaurant(orderCreated.id(), request);
 
         return new CreateOrderOrchestratorResponse(orderCreated.id());
     }
